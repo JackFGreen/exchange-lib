@@ -1,0 +1,232 @@
+/* variable
+   ========================================================================== */
+$count: 24;
+$gutter: 1%;
+
+$grid: grid;
+$grid-gutter: grid-gutter;
+$row: row;
+$col: col;
+
+$offset: offset;
+$order: order;
+
+$xs: xs;
+$sm: sm;
+$md: md;
+$lg: lg;
+$xl: xl;
+
+$screen-xs: 767;
+$screen-sm: 768;
+$screen-md: 992;
+$screen-lg: 1200;
+$screen-xl: 1920;
+
+/* placeholder
+   ========================================================================== */
+%flex-grow-0 {
+  flex-grow: 0;
+}
+%flex-shrink-0 {
+  flex-shrink: 0;
+}
+/* mixin
+   ========================================================================== */
+@mixin flex-basis($n: 100%) {
+  flex-basis: $n;
+}
+@mixin offset($n: 100%) {
+  margin-left: $n;
+}
+@mixin order($n: 0) {
+  order: $n;
+}
+/* function
+   ========================================================================== */
+@function join($n) {
+  @return $n + px;
+}
+@function div($n1, $n2) {
+  @return $n1 / $n2;
+}
+@function per($n) {
+  @return $n * 100%;
+}
+
+@function getPer($n1, $n2) {
+  @return per(div($n1, $n2));
+}
+
+/* ==========================================================================
+   grid
+   ========================================================================== */
+.#{$grid} {
+  .#{$row} {
+    display: flex;
+
+    &-wrap {
+      flex-wrap: wrap;
+    }
+
+    &-average {
+      .#{col} {
+        flex: 1;
+      }
+    }
+
+    &-gutter {
+      margin-left: -$gutter;
+      margin-right: -$gutter;
+      .#{col} {
+        padding-left: $gutter;
+        padding-right: $gutter;
+      }
+    }
+  }
+
+  .#{$col} {
+    &-space {
+      flex: 1;
+    }
+  }
+}
+
+@for $i from 1 through $count {
+  .#{$grid} {
+    .#{$row} {
+      .#{$col} {
+        // flex-basis
+        &-#{$i} {
+          @include flex-basis(getPer($i, $count));
+        }
+        // offset
+        &-#{$offset}-#{$i} {
+          @include offset(getPer($i, $count));
+        }
+        // order
+        &-#{$order}-#{$i} {
+          @include order($i);
+        }
+      }
+    }
+  }
+}
+
+/* ==========================================================================
+   media
+   ========================================================================== */
+@media (max-width: join($screen-xs)) {
+  @for $i from 1 through $count {
+    .#{$grid} {
+      .#{$row} {
+        .#{$col}-#{$xs} {
+          // flex-basis
+          &-#{$i} {
+            @include flex-basis(getPer($i, $count));
+          }
+          // offset
+          &-#{$offset}-#{$i} {
+            @include offset(getPer($i, $count));
+          }
+          // order
+          &-#{$order}-#{$i} {
+            @include order($i);
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: join($screen-sm)) {
+  @for $i from 1 through $count {
+    .#{$grid} {
+      .#{$row} {
+        .#{$col}-#{$sm} {
+          // flex-basis
+          &-#{$i} {
+            @include flex-basis(getPer($i, $count));
+          }
+          // offset
+          &-#{$offset}-#{$i} {
+            @include offset(getPer($i, $count));
+          }
+          // order
+          &-#{$order}-#{$i} {
+            @include order($i);
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: join($screen-md)) {
+  @for $i from 1 through $count {
+    .#{$grid} {
+      .#{$row} {
+        .#{$col}-#{$md} {
+          // flex-basis
+          &-#{$i} {
+            @include flex-basis(getPer($i, $count));
+          }
+          // offset
+          &-#{$offset}-#{$i} {
+            @include offset(getPer($i, $count));
+          }
+          // order
+          &-#{$order}-#{$i} {
+            @include order($i);
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: join($screen-lg)) {
+  @for $i from 1 through $count {
+    .#{$grid} {
+      .#{$row} {
+        .#{$col}-#{$lg} {
+          // flex-basis
+          &-#{$i} {
+            @include flex-basis(getPer($i, $count));
+          }
+          // offset
+          &-#{$offset}-#{$i} {
+            @include offset(getPer($i, $count));
+          }
+          // order
+          &-#{$order}-#{$i} {
+            @include order($i);
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: join($screen-xl)) {
+  @for $i from 1 through $count {
+    .#{$grid} {
+      .#{$row} {
+        .#{$col}-#{$xl} {
+          // flex-basis
+          &-#{$i} {
+            @include flex-basis(getPer($i, $count));
+          }
+          // offset
+          &-#{$offset}-#{$i} {
+            @include offset(getPer($i, $count));
+          }
+          // order
+          &-#{$order}-#{$i} {
+            @include order($i);
+          }
+        }
+      }
+    }
+  }
+}

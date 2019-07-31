@@ -1,0 +1,19 @@
+.iziToast {
+  &.iziToast--mobile {
+    border-radius: 4px;
+    min-height: auto !important;
+    > .iziToast-body {
+      min-height: auto !important;
+      .iziToast-texts {
+        width: 100%;
+        margin: 0 !important;
+      }
+      .iziToast-message {
+        line-height: 20px;
+        text-align: center !important;
+        width: 100% !important;
+        margin: 0 !important;
+      }
+    }
+  }
+}

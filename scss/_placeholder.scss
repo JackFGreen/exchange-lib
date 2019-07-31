@@ -1,0 +1,19 @@
+@import './variable';
+
+%text-center {
+  text-align: center;
+}
+
+%cursor-pointer {
+  cursor: pointer;
+}
+%cursor-disabled {
+  cursor: not-allowed;
+}
+
+%border-none {
+  border: none;
+}
+%outline-none {
+  outline: none;
+}

@@ -1,0 +1,45 @@
+@import './variable';
+
+@mixin hh($s) {
+  height: $s;
+  line-height: $s;
+}
+
+@mixin wh($s) {
+  width: $s;
+  height: $s;
+}
+
+/* 箭头 */
+@mixin arrow($rotate: 45deg, $size: 7px, $color: currentColor, $thick: 1px) {
+  display: inline-block;
+  @include wh($size);
+  border-right: $thick solid $color;
+  border-top: $thick solid $color;
+  transform: rotate($rotate);
+}
+
+@mixin close {
+  width: 20px;
+  height: 20px;
+  position: relative;
+
+  &:before,
+  &:after {
+    content: '';
+    width: 100%;
+    height: 1px;
+    background: #bbb;
+    position: absolute;
+    top: 10px;
+    left: 0;
+  }
+
+  &:before {
+    transform: rotate(45deg);
+  }
+
+  &:after {
+    transform: rotate(-45deg);
+  }
+}
